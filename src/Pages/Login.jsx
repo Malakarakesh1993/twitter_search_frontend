@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import {Redirect,Link} from 'react-router-dom';
 export default class Login extends Component {
   state={
     isLoading:false,
@@ -42,18 +42,12 @@ export default class Login extends Component {
       username: this.refs.username.value,
       password: this.refs.password.value
     }
-    // let data = JSON.stringify(formData);
 
     /* make API call to receive access token from server */
     axios.request({
       method: 'POST',
       url: 'http://localhost:4444/user_authenticate',
-    //   headers: {
-    //       "Content-type": "application/json; charset=UTF-8",
-    //       'Access-Control-Allow-Origin': '*',
-    //       'Access-Control-Allow-credentials':'true'
-    //   },
-        data: formData
+      data: formData
     }).then((res)=>{  
       console.log("api call sucessfull",res);
       localStorage.setItem("token", res.data.token);
@@ -99,6 +93,7 @@ export default class Login extends Component {
                                           <input type="text" ref="password" id="password" class="form-control" type="password" onBlur={this.passwordCheck} onFocus={this.passwordFocus}/>
                                           {this.state.passwordError ? <span className="error-msg">Password Cannot be Empty</span> : ""}
                                       </div>
+                                      <span>New User? <Link to="/signup">Register here</Link></span>
                                       <div class="form-group">
                                           {this.state.isLoading ? 'loading' : <input type="submit" name="submit" class="btn btn-info btn-md" disabled={this.state.usernameError ||this.state.passwordError} value="submit"/>}
                                       </div>

@@ -32,6 +32,15 @@ span.retweet-count {
   margin-left: 5px;
 }
 
+.star-icon{
+  cursor: pointer;
+
+}
+
+.star-icon i{
+  color:yellow;
+}
+
 .user-img img{
   border-radius: 50px;
 }
@@ -145,3 +154,133 @@ span.retweet-count {
     margin-left: 20px;
     margin-top: -15px;
  }
+
+ /*============== profile =============**/
+
+ .profile-pic img {
+    border-radius: 50%;
+    margin-left: 31px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 100px;
+}
+.fullName {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+ 
+}
+.username{
+  text-align: center;
+}
+.sidebar {
+  background-color: white;
+  padding: 24px;
+}
+.bg-white{
+  background-color: white;
+}
+.basic-info {
+  margin-top: 10px;
+  /* padding: 15px; */
+  color: #001b2f;
+  font-size: 18px;
+}
+.edit-profile-btn {
+  margin-left: 58px;
+  margin-top: 10px;
+}
+.margin-right-11{
+  margin-right: 11px;
+}
+
+.username{
+  display: block;
+}
+
+.img-preview {
+  height: 200px;
+  width: 200px;
+}
+.img-preview img{
+  height: 100%;
+  width: 100%;
+}
+
+
+ /*============== signup =============**/
+
+ .main{
+  margin-top: 70px;
+}
+
+h1.title { 
+ font-size: 50px;
+ font-family: 'Passion One', cursive; 
+ font-weight: 400; 
+}
+
+hr{
+ width: 10%;
+ color: #fff;
+}
+
+.form-group{
+ margin-bottom: 15px;
+}
+
+label{
+ margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+   font-size: 11px;
+   padding-top: 3px;
+}
+
+.main-login{
+  background-color: #fff;
+   /* shadows and rounded borders */
+   -moz-border-radius: 2px;
+   -webkit-border-radius: 2px;
+   border-radius: 2px;
+   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+
+.main-center{
+  margin-top: 30px;
+  margin: 0 auto;
+  max-width: 330px;
+   padding: 40px 40px;
+
+}
+
+.login-button{
+ margin-top: 5px;
+}
+
+.login-register{
+ font-size: 11px;
+ text-align: center;
+}
+.sign-up {
+  margin-left: 100px;
+  margin-right: 132px;
+  background: #fff;
+  padding: 33px;
+}
+
+
+/* .firstName{
+  display: block;
+}
+
+.lastName{
+  display: block;
+} */

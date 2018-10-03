@@ -24,11 +24,14 @@ export default class SearchBar extends Component {
     }
     // let data = JSON.stringify(formData);
     axios.request({
-      method: 'GET',
-      url: `http://localhost:4444/api/${keyword}`,
+      method: 'POST',
+      url: 'http://localhost:4444/api/',
       headers: {
         'Authorization': token
-    },
+      },
+      data: {
+        keyword: keyword
+      },
     
     }).then((res)=>{  
       console.log("api call sucessfull",res);

@@ -1,7 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
+import {Link} from 'react-router-dom';
+
 
 export default class TweetsList extends Component {
   
+  favTweet = (id)=>{
+    axios.request({
+      method: 'POST',
+      url: 'http://localhost:4444/favTweet',  
+      data: {
+        id: id,
+        token: localStorage.getItem('token')
+      }
+    }).then((res)=>{  
+      alert('Added to favorites');
+      this.setState({isLoading:false});
+
+    }).catch((err)=>{
+      alert('Error encountered' + err.message);
+      this.setState({isLoading:false});
+    })
+  }
+
   render() {
     let allTweets = this.props.allTweets || [];
     return(
@@ -15,9 +36,15 @@ export default class TweetsList extends Component {
                     <img src={tweet.user.profile_image_url}/>
                   </span>
                   <span class="col-md-11">
-                  <h5 class="card-title">{tweet.user.name}<span>@{tweet.user.screen_name}</span>
-                  </h5>
-                    
+                    <div className="row">
+                      <div className="col-md-11">
+                       <Link to={`/singletweet?id=${tweet.id_str}`}  target="_blank"> <h5 class="card-title">{tweet.user.name}<span>@{tweet.user.screen_name}</span>
+                        </h5></Link> 
+                      </div>
+                      <div className="col-md-1">
+                        <span className="star-icon" title="add to favourite tweet" onClick={()=>this.favTweet(tweet.id_str)}><i class="fas fa-star"></i></span>
+                      </div>
+                    </div>
                   <p class="card-text">
                      {tweet.text}
                   </p>
@@ -33,9 +60,7 @@ export default class TweetsList extends Component {
             )
           })
         }
-
       </div>
-    )
-   
-}
+    ) 
+  }
 }
