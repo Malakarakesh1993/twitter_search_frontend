@@ -21,12 +21,10 @@ export default class Signup extends Component {
       url: 'http://localhost:4444/signup',  
       data: data
     }).then((res)=>{  
-      console.log("api call sucessfull",res);
       localStorage.setItem("token", res.data.token);
       this.setState({isLoading:false});
 
     }).catch((err)=>{
-      console.log("api call unsucessfull",err);
       this.setState({isLoading:false});
     })
 

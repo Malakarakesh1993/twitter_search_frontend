@@ -27,7 +27,6 @@ export default class EditProfile extends Component {
                 token: localStorage.getItem('token')
             },
           }).then((res)=>{  
-            console.log("api call sucessfull",res);
             this.setState({
                 fname:res.data.data.firstname, 
                 lname:res.data.data.lastname, 
@@ -71,13 +70,10 @@ export default class EditProfile extends Component {
             url: 'http://localhost:4444/editprofile',  
             data: data
           }).then((res)=>{  
-              debugger;
-            console.log("api call sucessfull",res);
             this.setState({isLoading:false,isRedirect:true});
       
           }).catch((err)=>{
-              debugger;
-            // console.log("api call unsucessfull",err.response.status);
+            console.log("api call unsucessfull",err);
             this.setState({isLoading:false});
           })
     }

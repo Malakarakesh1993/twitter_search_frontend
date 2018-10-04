@@ -20,7 +20,7 @@ export default class Home extends Component {
     this.setState({isLoading:status});
   }
   getTweets = (tweets) => {
-    console.log(tweets, 'this is a tweet response');
+
     this.setState({tweets:tweets.statuses,isLoading:false,keyword:tweets.search_metadata.query});
     if(tweets.search_metadata.hasOwnProperty('next_results')) {
       let max_id_str = tweets.search_metadata.next_results.split('max_id=')[1].split('&')[0];

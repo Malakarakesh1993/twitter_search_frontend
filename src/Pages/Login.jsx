@@ -49,12 +49,12 @@ export default class Login extends Component {
       url: 'http://localhost:4444/user_authenticate',
       data: formData
     }).then((res)=>{  
-      console.log("api call sucessfull",res);
+
       localStorage.setItem("token", res.data.token);
       this.setState({isLoading:false});
 
     }).catch((err)=>{
-      console.log("api call unsucessfull",err.response.status);
+ 
       if(err.response.status===401){
           this.setState({unAuthorized:true});
       }else{

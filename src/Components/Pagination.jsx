@@ -20,11 +20,9 @@ export default class Pagination extends Component {
       },
     
     }).then((res)=>{  
-      console.log("next api call sucessfull",res);
       this.props.getTweets(res.data);
       this.props.toggleLoading(false);
     }).catch((err)=>{
-      console.log("next api call unsucessfull",err);
 
       this.props.toggleLoading(false);
     })
@@ -45,11 +43,10 @@ export default class Pagination extends Component {
       },
     
     }).then((res)=>{  
-      console.log("previous api call sucessfull",res);
+
       this.props.getTweets(res.data);
       this.props.toggleLoading(false);
     }).catch((err)=>{
-      console.log("previous api call unsucessfull",err);
 
       this.props.toggleLoading(false);
     })

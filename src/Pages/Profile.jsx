@@ -5,6 +5,7 @@ import NavBar from '../Components/NavBar';
 
 export default class Profile extends Component {
   state={
+    isLoading:true,
     isFavTweetsActive:false,
     isBasicInfoActive:true,
     showBasicInfo:true,
@@ -51,7 +52,7 @@ export default class Profile extends Component {
                 token: localStorage.getItem('token')
             },
           }).then((res)=>{  
-            console.log(res, 'response');
+            this.setState({favoriteTweets:res.data.data,isLoading:false})
           }).catch((err)=>{
             this.setState({isLoading:false});
           });
@@ -102,9 +103,38 @@ export default class Profile extends Component {
                     <li className="list-group-item"><b>Favourite Food</b>: {this.state.profileData.favorite_food}</li>
                   </ul>
                 </div>:
-                "Favourite Tweets"
-                  // display favourite tweets here same technique used in tweets list.
-                
+                  
+                    this.state.favoriteTweets.map((tweet) => {
+                      return(
+                      <div class="card">
+                        <div class="card-body row">
+                          <span class="user-img col-md-1">
+                            <img src={tweet.user.profile_image_url}/>
+                          </span>
+                          <span class="col-md-11">
+                            <div className="row">
+                              <div className="col-md-11">
+                               <Link to={`/singletweet?id=${tweet.id_str}`}  target="_blank"> <h5 class="card-title">{tweet.user.name}<span>@{tweet.user.screen_name}</span>
+                                </h5></Link> 
+                              </div>
+                              <div className="col-md-1">
+                                <span className="star-icon" title="add to favourite tweet" onClick={()=>this.favTweet(tweet.id_str)}><i class="fas fa-star"></i></span>
+                              </div>
+                            </div>
+                          <p class="card-text">
+                             {tweet.text}
+                          </p>
+                          <span class="feature-bar">
+                      <span class="retweet">
+                        <i class="fa fa-retweet"></i>
+                        <span className="retweet-count">{tweet.retweet_count}</span>
+                      </span>
+                      </span>
+                        </span>     
+                      </div>
+                      </div>
+                    )
+                    })
                 }
               </div>
             </div>

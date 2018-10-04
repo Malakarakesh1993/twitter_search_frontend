@@ -34,11 +34,10 @@ export default class SearchBar extends Component {
       },
     
     }).then((res)=>{  
-      console.log("api call sucessfull",res);
+    
       this.props.getTweets(res.data);
       this.props.toggleLoading(false);
     }).catch((err)=>{
-      console.log("api call unsucessfull",err);
 
       this.props.toggleLoading(false);
     })
